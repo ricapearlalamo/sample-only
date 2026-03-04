@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ERP UI Prototype (No Backend)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body data-theme="light">
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <h1>UI Enhancer Prototype</h1>
+          <p>No backend • Static demo</p>
+        </div>
+      </div>
+
+      <div class="side-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-width="2" d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+        <input placeholder="Search menu…" oninput="filterMenu(this.value)" />
+        <span class="k">Ctrl K</span>
+      </div>
+
+      <nav class="nav" id="nav">
+        <div class="section">Main</div>
+
+        <a class="active" data-page="dashboard" onclick="go('dashboard')">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-width="2" d="M4 13h6V4H4v9zm10 7h6V11h-6v9zM4 20h6v-5H4v5zm10-9h6V4h-6v7z"/>
+            </svg>
+          </div>
+          <span>Dashboard</span>
+          <span class="pill">New</span>
+        </a>
+
+        <a data-page="workspaces" onclick="go('workspaces')">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-width="2" d="M4 7h16M4 12h16M4 17h10"/>
+            </svg>
+          </div>
+          <span>Workspaces</span>
+        </a>
+
+        <a data-page="users" onclick="go('users')">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-width="2" d="M20 21a8 8 0 10-16 0M12 11a4 4 0 100-8 4 4 0 000 8z"/>
+            </svg>
+          </div>
+          <span>Users</span>
+        </a>
+
+        <div class="section">Modules</div>
+
+        <a data-page="employees" onclick="go('employees')">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+              <path stroke-width="2" d="M3 21a9 9 0 0118 0"/>
+            </svg>
+          </div>
+          <span>Employees</span>
+        </a>
+
+        <a data-page="reports" onclick="go('reports')">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-width="2" d="M4 19V5m6 14V9m6 10v-6m4 6H2"/>
+            </svg>
+          </div>
+          <span>Reports</span>
+        </a>
+
+        <a data-page="settings" onclick="go('settings')">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-width="2" d="M12 15.5A3.5 3.5 0 1112 8.5a3.5 3.5 0 010 7z"/>
+              <path stroke-width="2" d="M19.4 15a7.7 7.7 0 00.1-1l2-1.2-2-3.4-2.2.6a7.8 7.8 0 00-1.6-1l-.3-2.3H9.6l-.3 2.3a7.8 7.8 0 00-1.6 1l-2.2-.6-2 3.4L5.6 14a7.7 7.7 0 00.1 1 7.7 7.7 0 00-.1 1l-2 1.2 2 3.4 2.2-.6a7.8 7.8 0 001.6 1l.3 2.3h4.8l.3-2.3a7.8 7.8 0 001.6-1l2.2.6 2-3.4-2-1.2a7.7 7.7 0 00-.1-1z"/>
+            </svg>
+          </div>
+          <span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="avatar"></div>
+        <div class="meta">
+          <b>Admin User</b>
+          <small>UI Demo Mode</small>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="burger" onclick="toggleSidebar()">☰</button>
+
+        <div class="top-title">
+          <h2 id="pageTitle">Dashboard</h2>
+          <small class="muted" id="pageHint">Overview of activity (prototype)</small>
+        </div>
+
+        <div class="top-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-width="2" d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          <input placeholder="Search content…" />
+        </div>
+
+        <div class="actions">
+          <button class="btn" onclick="toggleTheme()" title="Toggle Light/Dark">
+            <span id="themeIcon">🌙</span>
+            <span class="muted">Theme</span>
+          </button>
+          <button class="btn primary" onclick="openModal()">
+            <span class="dot"></span>
+            Create
+          </button>
+        </div>
+      </header>
+
+      <section class="content">
+        <!-- Dashboard -->
+        <div class="grid page" id="page-dashboard">
+          <div class="card" style="grid-column: span 4;">
+            <div class="kpi">
+              <div>
+                <h3>Total Requests</h3>
+                <div class="num">128</div>
+                <div class="muted">Last 30 days</div>
+              </div>
+              <span class="chip">+14%</span>
+            </div>
+          </div>
+
+          <div class="card" style="grid-column: span 4;">
+            <div class="kpi">
+              <div>
+                <h3>Pending Approvals</h3>
+                <div class="num">17</div>
+                <div class="muted">Needs action</div>
+              </div>
+              <span class="chip">Today</span>
+            </div>
+          </div>
+
+          <div class="card" style="grid-column: span 4;">
+            <div class="kpi">
+              <div>
+                <h3>System Health</h3>
+                <div class="num">Good</div>
+                <div class="muted">All services OK</div>
+              </div>
+              <span class="chip">Stable</span>
+            </div>
+          </div>
+
+          <div class="card" style="grid-column: span 8;">
+            <h3>Recent Activity</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Module</th>
+                  <th>Action</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2026-03-04</td>
+                  <td>Employees</td>
+                  <td>Updated profile</td>
+                  <td><span class="status good"><span class="s-dot"></span>Completed</span></td>
+                </tr>
+                <tr>
+                  <td>2026-03-03</td>
+                  <td>Reports</td>
+                  <td>Generated summary</td>
+                  <td><span class="status"><span class="s-dot"></span>Processing</span></td>
+                </tr>
+                <tr>
+                  <td>2026-03-02</td>
+                  <td>Settings</td>
+                  <td>Changed theme</td>
+                  <td><span class="status bad"><span class="s-dot"></span>Failed</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="muted tiny-note">
+              This is dummy data for UI design only (no backend).
+            </p>
+          </div>
+
+          <div class="card" style="grid-column: span 4;">
+            <h3>Quick Actions</h3>
+            <div class="stack">
+              <button class="btn" onclick="showToast('Opened workspace editor','This is only a UI prototype; connect later if needed.')">Edit Workspace</button>
+              <button class="btn" onclick="showToast('Added shortcut','You can design navigation items here.')">Add Shortcut</button>
+              <button class="btn" onclick="showToast('Exported mock','Use this file as your UI reference.')">Export Mock</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Other pages -->
+        <div class="grid page" id="page-workspaces" style="display:none;">
+          <div class="card" style="grid-column: span 12;">
+            <h3>Workspaces</h3>
+            <p class="muted">Design your navigation layout here (static prototype).</p>
+          </div>
+        </div>
+
+        <div class="grid page" id="page-users" style="display:none;">
+          <div class="card" style="grid-column: span 12;">
+            <h3>Users</h3>
+            <p class="muted">Add user list UI here (no backend).</p>
+          </div>
+        </div>
+
+        <div class="grid page" id="page-employees" style="display:none;">
+          <div class="card" style="grid-column: span 12;">
+            <h3>Employees</h3>
+            <p class="muted">Employee module UI mock page.</p>
+          </div>
+        </div>
+
+        <div class="grid page" id="page-reports" style="display:none;">
+          <div class="card" style="grid-column: span 12;">
+            <h3>Reports</h3>
+            <p class="muted">Reports UI mock page.</p>
+          </div>
+        </div>
+
+        <div class="grid page" id="page-settings" style="display:none;">
+          <div class="card" style="grid-column: span 12;">
+            <h3>Settings</h3>
+            <p class="muted">Settings UI mock page (theme, layout, etc.).</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div class="overlay" id="overlay" onclick="closeModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <header>
+        <h4>Create (Mock)</h4>
+        <button class="x" onclick="closeModal()">✕</button>
+      </header>
+
+      <div class="field">
+        <label>Type</label>
+        <select id="type">
+          <option>Employee</option>
+          <option>Request</option>
+          <option>Workspace Shortcut</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Title</label>
+        <input id="title" placeholder="e.g., Add Leave Request UI" />
+      </div>
+
+      <div class="field">
+        <label>Priority</label>
+        <select id="priority">
+          <option>Normal</option>
+          <option>High</option>
+          <option>Urgent</option>
+        </select>
+      </div>
+
+      <footer>
+        <button class="btn" onclick="closeModal()">Cancel</button>
+        <button class="btn primary" onclick="mockCreate()">Create</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <div class="t-ico">✅</div>
+    <div>
+      <b id="toastTitle">Saved</b>
+      <p id="toastMsg">This is a demo message.</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
