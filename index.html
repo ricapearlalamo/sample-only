@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ERP UI Prototype (No Backend)</title>
+  <title>UI Enhancer Prototype</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body data-theme="light">
   <div class="app">
+    <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
       <div class="brand">
         <div class="logo"></div>
@@ -18,18 +19,18 @@
         </div>
       </div>
 
+      <!-- Sidebar Search (clean + centered) -->
       <div class="side-search side-search-v2">
-  <span class="side-search-icon" aria-hidden="true">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path stroke-width="2"
-        d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z" />
-    </svg>
-  </span>
+        <span class="side-search-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-width="2"
+              d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </span>
 
-  <input type="text" placeholder="Search…" oninput="filterMenu(this.value)" />
-
-  <span class="side-search-k">Ctrl K</span>
-</div>
+        <input type="text" placeholder="Search…" oninput="filterMenu(this.value)" />
+        <span class="side-search-k">Ctrl K</span>
+      </div>
 
       <nav class="nav" id="nav">
         <div class="section">Main</div>
@@ -37,7 +38,8 @@
         <a class="active" data-page="dashboard" onclick="go('dashboard')">
           <div class="ico">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path stroke-width="2" d="M4 13h6V4H4v9zm10 7h6V11h-6v9zM4 20h6v-5H4v5zm10-9h6V4h-6v7z"/>
+              <path stroke-width="2"
+                d="M4 13h6V4H4v9zm10 7h6V11h-6v9zM4 20h6v-5H4v5zm10-9h6V4h-6v7z" />
             </svg>
           </div>
           <span>Dashboard</span>
@@ -47,7 +49,7 @@
         <a data-page="workspaces" onclick="go('workspaces')">
           <div class="ico">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path stroke-width="2" d="M4 7h16M4 12h16M4 17h10"/>
+              <path stroke-width="2" d="M4 7h16M4 12h16M4 17h10" />
             </svg>
           </div>
           <span>Workspaces</span>
@@ -56,7 +58,7 @@
         <a data-page="users" onclick="go('users')">
           <div class="ico">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path stroke-width="2" d="M20 21a8 8 0 10-16 0M12 11a4 4 0 100-8 4 4 0 000 8z"/>
+              <path stroke-width="2" d="M20 21a8 8 0 10-16 0M12 11a4 4 0 100-8 4 4 0 000 8z" />
             </svg>
           </div>
           <span>Users</span>
@@ -67,8 +69,8 @@
         <a data-page="employees" onclick="go('employees')">
           <div class="ico">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-              <path stroke-width="2" d="M3 21a9 9 0 0118 0"/>
+              <path stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              <path stroke-width="2" d="M3 21a9 9 0 0118 0" />
             </svg>
           </div>
           <span>Employees</span>
@@ -77,7 +79,7 @@
         <a data-page="reports" onclick="go('reports')">
           <div class="ico">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path stroke-width="2" d="M4 19V5m6 14V9m6 10v-6m4 6H2"/>
+              <path stroke-width="2" d="M4 19V5m6 14V9m6 10v-6m4 6H2" />
             </svg>
           </div>
           <span>Reports</span>
@@ -86,8 +88,9 @@
         <a data-page="settings" onclick="go('settings')">
           <div class="ico">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path stroke-width="2" d="M12 15.5A3.5 3.5 0 1112 8.5a3.5 3.5 0 010 7z"/>
-              <path stroke-width="2" d="M19.4 15a7.7 7.7 0 00.1-1l2-1.2-2-3.4-2.2.6a7.8 7.8 0 00-1.6-1l-.3-2.3H9.6l-.3 2.3a7.8 7.8 0 00-1.6 1l-2.2-.6-2 3.4L5.6 14a7.7 7.7 0 00.1 1 7.7 7.7 0 00-.1 1l-2 1.2 2 3.4 2.2-.6a7.8 7.8 0 001.6 1l.3 2.3h4.8l.3-2.3a7.8 7.8 0 001.6-1l2.2.6 2-3.4-2-1.2a7.7 7.7 0 00-.1-1z"/>
+              <path stroke-width="2" d="M12 15.5A3.5 3.5 0 1112 8.5a3.5 3.5 0 010 7z" />
+              <path stroke-width="2"
+                d="M19.4 15a7.7 7.7 0 00.1-1l2-1.2-2-3.4-2.2.6a7.8 7.8 0 00-1.6-1l-.3-2.3H9.6l-.3 2.3a7.8 7.8 0 00-1.6 1l-2.2-.6-2 3.4L5.6 14a7.7 7.7 0 00.1 1 7.7 7.7 0 00-.1 1l-2 1.2 2 3.4 2.2-.6a7.8 7.8 0 001.6 1l.3 2.3h4.8l.3-2.3a7.8 7.8 0 001.6-1l2.2.6 2-3.4-2-1.2a7.7 7.7 0 00-.1-1z" />
             </svg>
           </div>
           <span>Settings</span>
@@ -103,28 +106,34 @@
       </div>
     </aside>
 
+    <!-- MAIN -->
     <main class="main">
+      <!-- TOPBAR: search moved to RIGHT + smaller -->
       <header class="topbar">
         <button class="burger" onclick="toggleSidebar()">☰</button>
 
         <div class="top-title">
           <h2 id="pageTitle">Dashboard</h2>
-          <small class="muted" id="pageHint">Overview of activity (prototype)</small>
+          <small class="muted" id="pageHint">Overview</small>
         </div>
 
-        <div class="top-search compact">
-          <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-    <path stroke-width="2" d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z"/>
-  </svg>
-  <input placeholder="Search…" />
-  <span class="hint">Ctrl K</span>
-</div>
+        <div class="top-spacer"></div>
 
-        <div class="actions">
+        <div class="actions right-actions">
+          <!-- Small search on the right -->
+          <div class="top-search small-right">
+            <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-width="2"
+                d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input placeholder="Search…" />
+          </div>
+
           <button class="btn" onclick="toggleTheme()" title="Toggle Light/Dark">
             <span id="themeIcon">🌙</span>
             <span class="muted">Theme</span>
           </button>
+
           <button class="btn primary" onclick="openModal()">
             <span class="dot"></span>
             Create
@@ -200,17 +209,15 @@
                 </tr>
               </tbody>
             </table>
-            <p class="muted tiny-note">
-              This is dummy data for UI design only (no backend).
-            </p>
+            <p class="muted tiny-note">This is dummy data for UI design only (no backend).</p>
           </div>
 
           <div class="card" style="grid-column: span 4;">
             <h3>Quick Actions</h3>
             <div class="stack">
-              <button class="btn" onclick="showToast('Opened workspace editor','This is only a UI prototype; connect later if needed.')">Edit Workspace</button>
-              <button class="btn" onclick="showToast('Added shortcut','You can design navigation items here.')">Add Shortcut</button>
-              <button class="btn" onclick="showToast('Exported mock','Use this file as your UI reference.')">Export Mock</button>
+              <button class="btn" onclick="showToast('Opened workspace editor','UI prototype only.')">Edit Workspace</button>
+              <button class="btn" onclick="showToast('Added shortcut','Navigation mock updated.')">Add Shortcut</button>
+              <button class="btn" onclick="showToast('Exported mock','Use this as UI reference.')">Export Mock</button>
             </div>
           </div>
         </div>
@@ -219,35 +226,35 @@
         <div class="grid page" id="page-workspaces" style="display:none;">
           <div class="card" style="grid-column: span 12;">
             <h3>Workspaces</h3>
-            <p class="muted">Design your navigation layout here (static prototype).</p>
+            <p class="muted">Static mock page.</p>
           </div>
         </div>
 
         <div class="grid page" id="page-users" style="display:none;">
           <div class="card" style="grid-column: span 12;">
             <h3>Users</h3>
-            <p class="muted">Add user list UI here (no backend).</p>
+            <p class="muted">Static mock page.</p>
           </div>
         </div>
 
         <div class="grid page" id="page-employees" style="display:none;">
           <div class="card" style="grid-column: span 12;">
             <h3>Employees</h3>
-            <p class="muted">Employee module UI mock page.</p>
+            <p class="muted">Static mock page.</p>
           </div>
         </div>
 
         <div class="grid page" id="page-reports" style="display:none;">
           <div class="card" style="grid-column: span 12;">
             <h3>Reports</h3>
-            <p class="muted">Reports UI mock page.</p>
+            <p class="muted">Static mock page.</p>
           </div>
         </div>
 
         <div class="grid page" id="page-settings" style="display:none;">
           <div class="card" style="grid-column: span 12;">
             <h3>Settings</h3>
-            <p class="muted">Settings UI mock page (theme, layout, etc.).</p>
+            <p class="muted">Static mock page.</p>
           </div>
         </div>
       </section>
