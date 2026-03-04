@@ -201,19 +201,57 @@ button,input{font:inherit}
 .top-title h2{margin:0;font-size:15px}
 .muted{color:var(--muted)}
 
-.top-search{
-  flex:1;
-  display:flex;align-items:center;gap:10px;
-  padding:10px 12px;
-  border-radius: 16px;
-  border:1px solid var(--border);
+/* TOP SEARCH (IMPROVED - COMPACT) */
+.top-search.compact{
+  flex: 1;
+  max-width: 520px;     /* prevents it from becoming too wide */
+  height: 42px;         /* smaller height */
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding: 0 12px;
+  border-radius: 999px; /* pill style */
+  border: 1px solid var(--border);
   background: var(--panel);
-  box-shadow: var(--shadow);
-  min-width: 180px;
+  box-shadow: 0 10px 24px rgba(17,24,39,.06);
+  min-width: 220px;
 }
-.top-search input{
-  border:none;outline:none;background:transparent;
-  width:100%;color:var(--text);
+
+.top-search.compact .search-ico{
+  width: 16px;
+  height: 16px;
+  opacity: .65;
+}
+
+.top-search.compact input{
+  border:none;
+  outline:none;
+  background:transparent;
+  width:100%;
+  color:var(--text);
+  font-size: 13px; /* slightly smaller text */
+}
+
+.top-search.compact input::placeholder{
+  color: var(--muted);
+  opacity: .9;
+}
+
+.top-search.compact .hint{
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(107,114,128,.06);
+  white-space: nowrap;
+}
+
+/* Better focus look */
+.top-search.compact:focus-within{
+  border-color: rgba(37,99,235,.45);
+  box-shadow: 0 10px 24px rgba(17,24,39,.06), var(--focus);
 }
 
 .actions{display:flex;align-items:center;gap:10px}
@@ -238,6 +276,11 @@ button,input{font:inherit}
 .btn .dot{
   width:8px;height:8px;border-radius:999px;background: var(--good);
   box-shadow: 0 0 0 3px rgba(22,163,74,.15);
+}
+
+.topbar{
+  padding: 12px 16px;   /* slightly smaller */
+  gap: 10px;
 }
 
 /* Content */

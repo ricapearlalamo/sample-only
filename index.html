@@ -18,13 +18,7 @@
         </div>
       </div>
 
-      <div class="side-search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path stroke-width="2" d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z"/>
-        </svg>
-        <input placeholder="Search menu…" oninput="filterMenu(this.value)" />
-        <span class="k">Ctrl K</span>
-      </div>
+      
 
       <nav class="nav" id="nav">
         <div class="section">Main</div>
@@ -107,12 +101,13 @@
           <small class="muted" id="pageHint">Overview of activity (prototype)</small>
         </div>
 
-        <div class="top-search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-width="2" d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z"/>
-          </svg>
-          <input placeholder="Search content…" />
-        </div>
+        <div class="top-search compact">
+          <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+    <path stroke-width="2" d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z"/>
+  </svg>
+  <input placeholder="Search…" />
+  <span class="hint">Ctrl K</span>
+</div>
 
         <div class="actions">
           <button class="btn" onclick="toggleTheme()" title="Toggle Light/Dark">
